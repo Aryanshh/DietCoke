@@ -7,40 +7,71 @@ document.addEventListener('mousemove', (e) => {
     mouseGlow.style.top = e.clientY + 'px';
 });
 
-// Particle System
+// Advanced Particle System
 const particlesContainer = document.getElementById('particles-container');
-const particleCount = 40;
+const particleCount = 100;
+const particles = [];
 
 for (let i = 0; i < particleCount; i++) {
     const particle = document.createElement('div');
     particle.className = 'particle';
     
-    // Random initial positions
-    const x = Math.random() * 100;
-    const y = Math.random() * 100;
-    const size = Math.random() * 3 + 1;
-    const duration = Math.random() * 20 + 10;
-    const delay = Math.random() * 5;
+    const x = Math.random() * window.innerWidth;
+    const y = Math.random() * window.innerHeight;
+    const size = Math.random() * 2 + 1;
     
-    particle.style.left = `${x}%`;
-    particle.style.top = `${y}%`;
     particle.style.width = `${size}px`;
     particle.style.height = `${size}px`;
     
-    // Animate particles
-    particle.animate([
-        { transform: `translate(0, 0)`, opacity: 0.1 },
-        { transform: `translate(${Math.random() * 100 - 50}px, ${Math.random() * 100 - 50}px)`, opacity: 0.3 },
-        { transform: `translate(0, 0)`, opacity: 0.1 }
-    ], {
-        duration: duration * 1000,
-        iterations: Infinity,
-        easing: 'ease-in-out',
-        delay: delay * 1000
-    });
+    const pObj = {
+        el: particle,
+        x: x,
+        y: y,
+        vx: (Math.random() - 0.5) * 0.5,
+        vy: (Math.random() - 0.5) * 0.5,
+        originX: x,
+        originY: y
+    };
     
+    particles.push(pObj);
     particlesContainer.appendChild(particle);
 }
+
+function animateParticles() {
+    particles.forEach(p => {
+        p.x += p.vx;
+        p.y += p.vy;
+        
+        // Mouse interaction
+        const dx = mouseX - p.x;
+        const dy = mouseY - p.y;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < 200) {
+            const force = (200 - dist) / 200;
+            p.x -= dx * force * 0.05;
+            p.y -= dy * force * 0.05;
+        }
+        
+        // Wrap around
+        if (p.x < 0) p.x = window.innerWidth;
+        if (p.x > window.innerWidth) p.x = 0;
+        if (p.y < 0) p.y = window.innerHeight;
+        if (p.y > window.innerHeight) p.y = 0;
+        
+        p.el.style.transform = `translate3d(${p.x}px, ${p.y}px, 0)`;
+    });
+    requestAnimationFrame(animateParticles);
+}
+
+let mouseX = 0;
+let mouseY = 0;
+document.addEventListener('mousemove', (e) => {
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+});
+
+animateParticles();
 
 // Hero Parallax
 window.addEventListener('scroll', () => {

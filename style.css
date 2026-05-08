@@ -83,6 +83,13 @@ body::after {
   transition: transform 0.1s linear;
 }
 
+#particles-container {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+}
+
 /* Floating Particles */
 .particle {
   position: absolute;
@@ -90,8 +97,10 @@ body::after {
   width: 2px;
   height: 2px;
   border-radius: 50%;
-  opacity: 0.2;
+  opacity: 0.6;
   pointer-events: none;
+  box-shadow: 0 0 10px var(--accent-green);
+  transition: opacity 0.3s;
 }
 
 /* Dynamic Glows */
