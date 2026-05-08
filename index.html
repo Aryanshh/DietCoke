@@ -22,7 +22,21 @@
     <div class="mouse-glow"></div>
     <div id="particles-container"></div>
     <div class="custom-cursor"></div>
-    <div class="custom-cursor-follower"></div>
+    <!-- Technical HUD Overlay -->
+    <div class="hud-overlay">
+        <div class="hud-top">
+            <div class="hud-tag" id="hud-section">SECTION: HERO_PHASE</div>
+            <div class="hud-tag" id="hud-progress">LINK_STABILITY: 100%</div>
+        </div>
+        <div class="hud-bottom">
+            <div class="hud-tag" id="hud-coords">X: 000 // Y: 000</div>
+            <div class="hud-tag">STATUS: TRANSMITTING</div>
+        </div>
+        <div class="hud-line hud-line-top"></div>
+        <div class="hud-line hud-line-bottom"></div>
+        <div class="hud-line-vert hud-line-left"></div>
+        <div class="hud-line-vert hud-line-right"></div>
+    </div>
 
     <div class="glow-container">
         <div class="glow glow-1"></div>
@@ -55,7 +69,7 @@
             </div>
 
             <div class="reveal">
-                <a href="#intro" class="laser-button">START</a>
+                <a href="#intro" class="laser-button">EXPLORE</a>
             </div>
         </section>
 
@@ -218,21 +232,27 @@
                 <h2 class="headline" style="font-size: 5rem;">Let's Connect</h2>
             </div>
 
-            <div class="connect-stack reveal"
-                style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap;">
-                <a href="mailto:aryanshh8sri@gmail.com" class="cinematic-link" style="width: auto; padding: 1rem;">
-                    <span class="technical">01/DIRECT</span>
-                    <span class="link-text" style="font-size: clamp(2rem, 5vw, 4rem);">MAIL</span>
+            <div class="bento-grid reveal" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem;">
+                <a href="mailto:aryanshh8sri@gmail.com" class="luminosity-card" style="text-decoration: none; text-align: left;">
+                    <div class="card-content">
+                        <div class="technical">01 / DIRECT CHANNEL</div>
+                        <h3 class="headline" style="font-size: 3.5rem; margin: 1.5rem 0; color: var(--accent-green);">MAIL</h3>
+                        <p class="body" style="color: var(--text-secondary);">aryanshh8sri@gmail.com</p>
+                    </div>
                 </a>
-                <a href="https://www.linkedin.com/in/aryanshh-srivastava/" target="_blank" class="cinematic-link"
-                    style="width: auto; padding: 1rem;">
-                    <span class="technical">02/SOCIAL</span>
-                    <span class="link-text" style="font-size: clamp(2rem, 5vw, 4rem);">LINKEDIN</span>
+                <a href="https://www.linkedin.com/in/aryanshh-srivastava/" target="_blank" class="luminosity-card" style="text-decoration: none; text-align: left;">
+                    <div class="card-content">
+                        <div class="technical">02 / PROFESSIONAL LOG</div>
+                        <h3 class="headline" style="font-size: 3.5rem; margin: 1.5rem 0; color: var(--accent-green);">LINKEDIN</h3>
+                        <p class="body" style="color: var(--text-secondary);">@aryanshh-srivastava</p>
+                    </div>
                 </a>
-                <a href="https://wa.me/919205977372" target="_blank" class="cinematic-link"
-                    style="width: auto; padding: 1rem;">
-                    <span class="technical">03/INSTANT</span>
-                    <span class="link-text" style="font-size: clamp(2rem, 5vw, 4rem);">WHATSAPP</span>
+                <a href="https://wa.me/919205977372" target="_blank" class="luminosity-card" style="text-decoration: none; text-align: left;">
+                    <div class="card-content">
+                        <div class="technical">03 / INSTANT SIGNAL</div>
+                        <h3 class="headline" style="font-size: 3.5rem; margin: 1.5rem 0; color: var(--accent-green);">WHATSAPP</h3>
+                        <p class="body" style="color: var(--text-secondary);">+91 92059 77372</p>
+                    </div>
                 </a>
             </div>
         </section>

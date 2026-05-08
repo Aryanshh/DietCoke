@@ -401,36 +401,165 @@ section {
   align-items: center;
   position: relative;
   transition: all 0.5s var(--ease-out-expo);
-  padding: 2rem;
-  width: 100%;
+  padding: 3rem;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(191, 255, 0, 0.1);
+  border-radius: 1.5rem;
+  backdrop-filter: blur(10px);
 }
 
 .cinematic-link .technical {
-  opacity: 0.4;
+  opacity: 0.6;
   margin-bottom: 0.5rem;
   transition: all 0.3s;
+  color: var(--accent-green);
 }
 
 .cinematic-link .link-text {
   font-family: var(--font-headline);
-  font-size: clamp(3rem, 10vw, 8rem);
+  font-size: clamp(1.5rem, 4vw, 3rem);
   font-weight: 800;
-  line-height: 0.8;
-  color: transparent;
-  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.2);
+  line-height: 1;
+  color: #FFFFFF;
   transition: all 0.5s var(--ease-out-expo);
   text-transform: uppercase;
 }
 
-.cinematic-link:hover .link-text {
-  color: var(--accent-green);
-  -webkit-text-stroke: 1px var(--accent-green);
-  transform: scale(1.05);
-  text-shadow: 0 0 50px rgba(191, 255, 0, 0.3);
+.cinematic-link:hover {
+  border-color: var(--accent-green);
+  background: rgba(191, 255, 0, 0.05);
+  transform: translateY(-10px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4), 0 0 20px rgba(191, 255, 0, 0.1);
 }
 
-.cinematic-link:hover .technical {
-  opacity: 1;
-  color: #FFFFFF;
-  transform: translateY(-5px);
+.cinematic-link:hover .link-text {
+  color: var(--accent-green);
 }
+
+/* Technical HUD */
+.hud-overlay {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.hud-top, .hud-bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.hud-tag {
+  font-family: var(--font-technical);
+  font-size: 9px;
+  color: var(--accent-green);
+  opacity: 0.5;
+  letter-spacing: 0.2em;
+}
+
+.hud-line {
+  position: fixed;
+  left: 3rem;
+  right: 3rem;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.hud-line-top { top: 4.5rem; }
+.hud-line-bottom { bottom: 4.5rem; }
+
+.hud-line-vert {
+  position: fixed;
+  top: 3rem;
+  bottom: 3rem;
+  width: 1px;
+  background: rgba(255, 255, 255, 0.05);
+}
+/* Social Hub 2.0 */
+.social-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  margin-top: 4rem;
+}
+
+.social-tile {
+  text-decoration: none;
+  position: relative;
+  height: 400px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  border-radius: 2rem;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.6s var(--ease-out-expo);
+  transform-style: preserve-3d;
+  perspective: 1000px;
+}
+
+.tile-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(191, 255, 0, 0.1), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.social-tile:hover .tile-bg {
+  opacity: 1;
+}
+
+.tile-content {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  transition: transform 0.6s var(--ease-out-expo);
+}
+
+.tile-label {
+  font-family: var(--font-headline);
+  font-size: 5rem;
+  font-weight: 800;
+  color: transparent;
+  -webkit-text-stroke: 1px rgba(255, 255, 255, 0.1);
+  margin: 1rem 0;
+  transition: all 0.4s;
+}
+
+.tile-sub {
+  font-family: var(--font-technical);
+  font-size: 10px;
+  color: var(--text-secondary);
+  letter-spacing: 0.1em;
+  opacity: 0.5;
+  transition: all 0.4s;
+}
+
+.social-tile:hover {
+  border-color: var(--accent-green);
+  transform: translateY(-10px) rotateX(5deg) rotateY(5deg);
+  background: rgba(191, 255, 0, 0.02);
+  box-shadow: 0 30px 60px rgba(0, 0, 0, 0.5), 0 0 40px rgba(191, 255, 0, 0.05);
+}
+
+.social-tile:hover .tile-label {
+  color: #FFFFFF;
+  -webkit-text-stroke: 1px #FFFFFF;
+  transform: scale(1.1);
+  text-shadow: 0 0 30px rgba(255, 255, 255, 0.2);
+}
+
+.social-tile:hover .tile-sub {
+  color: var(--accent-green);
+  opacity: 1;
+}
+
+.hud-line-left { left: 4.5rem; }
+.hud-line-right { right: 4.5rem; }

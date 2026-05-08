@@ -144,3 +144,32 @@ document.addEventListener('mousemove', (e) => {
     document.querySelector('.glow-1').style.transform = `translate(${xMove}%, ${yMove}%)`;
     document.querySelector('.glow-2').style.transform = `translate(${-xMove}%, ${-yMove}%)`;
 });
+
+// HUD Updates
+const hudSection = document.getElementById('hud-section');
+const hudProgress = document.getElementById('hud-progress');
+const hudCoords = document.getElementById('hud-coords');
+
+window.addEventListener('scroll', () => {
+    // Progress calculation
+    const winScroll = document.body.scrollTop || document.documentElement.scrollTop;
+    const height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    const scrolled = Math.round((winScroll / height) * 100);
+    if (hudProgress) hudProgress.innerText = `LINK_STABILITY: ${100 - scrolled}%`;
+    
+    // Section detection
+    const sections = ['hero', 'intro', 'capabilities', 'domains', 'video', 'connect'];
+    sections.forEach(id => {
+        const el = document.getElementById(id);
+        if (el) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight / 2 && rect.bottom > window.innerHeight / 2) {
+                if (hudSection) hudSection.innerText = `SECTION: ${id.toUpperCase()}_PHASE`;
+            }
+        }
+    });
+});
+
+document.addEventListener('mousemove', (e) => {
+    if (hudCoords) hudCoords.innerText = `X: ${String(e.clientX).padStart(3, '0')} // Y: ${String(e.clientY).padStart(3, '0')}`;
+});
