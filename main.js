@@ -204,3 +204,16 @@ window.addEventListener('scroll', () => {
 document.addEventListener('mousemove', (e) => {
     if (hudCoords) hudCoords.innerText = `X: ${String(e.clientX).padStart(3, '0')} // Y: ${String(e.clientY).padStart(3, '0')}`;
 });
+
+// Loader Removal
+window.addEventListener('load', () => {
+    const loader = document.getElementById('loader');
+    if (loader) {
+        setTimeout(() => {
+            loader.style.opacity = '0';
+            setTimeout(() => {
+                loader.style.display = 'none';
+            }, 800);
+        }, 1500); // 1.5s display for cinematic effect
+    }
+});
