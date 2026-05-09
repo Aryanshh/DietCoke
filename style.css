@@ -24,11 +24,15 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
+html, body {
+  overflow-x: hidden;
+  width: 100%;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
   font-family: var(--font-body);
-  overflow-x: hidden;
   line-height: 1.6;
   cursor: none; /* For custom cursor */
 }
@@ -392,12 +396,24 @@ section {
   padding: 12rem 0; /* Consistent vertical spacing */
 }
 
+@media (max-width: 1024px) {
+  .bento-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+}
+
 @media (max-width: 768px) {
   section {
     padding: 8rem 0;
   }
   .container {
     padding: 0 2rem;
+  }
+  .bento-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .hud-overlay {
+    display: none; /* Hide HUD on mobile for better alignment */
   }
 }
 
