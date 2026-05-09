@@ -29,6 +29,10 @@ html, body {
   width: 100%;
 }
 
+body.no-scroll {
+  overflow: hidden;
+}
+
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
