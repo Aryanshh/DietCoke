@@ -467,7 +467,7 @@ section {
   inset: 0;
   pointer-events: none;
   z-index: 9998;
-  padding: 3rem;
+  padding: 2.5rem 3.5rem; /* Adjusted for better framing */
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -477,6 +477,7 @@ section {
   display: flex;
   justify-content: space-between;
   width: 100%;
+  align-items: flex-start;
 }
 
 .hud-tag {
